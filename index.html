@@ -1,270 +1,596 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kapil Dev Pal | Ruby on Rails Developer</title>
-
+<title>Kapil Dev Pal — Software Engineer &amp; Ruby on Rails Developer</title>
+<meta name="description" content="Portfolio of Kapil Dev Pal, Software Engineer and Ruby on Rails developer building scalable SaaS platforms and REST APIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg: #0F1626;
+    --bg-alt: #16203A;
+    --bg-elevated: #1C2A4A;
+    --text: #EAE6DA;
+    --text-dim: #9FAEC7;
+    --accent: #E8A33D;
+    --accent-dim: #B98436;
+    --teal: #5FB8C4;
+    --border: rgba(232,163,61,0.22);
+    --border-soft: rgba(159,174,199,0.16);
+    --display: 'Space Grotesk', sans-serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --max: 880px;
+    color-scheme: dark;
+  }
 
-body{
-font-family: 'Segoe UI', Arial;
-margin:0;
-background:#f4f6f9;
-color:#333;
-}
+  :root[data-theme="light"]{
+    --bg: #F2F0E8;
+    --bg-alt: #FFFFFF;
+    --bg-elevated: #EAE7DC;
+    --text: #1B2333;
+    --text-dim: #5B6478;
+    --accent: #C9791E;
+    --accent-dim: #A6631A;
+    --teal: #1C7480;
+    --border: rgba(201,121,30,0.3);
+    --border-soft: rgba(27,35,51,0.12);
+    color-scheme: light;
+  }
 
-.container{
-max-width:1000px;
-margin:auto;
-background:white;
-padding:40px;
-}
+  /* the terminal window always stays dark, on-brand for a code environment,
+     even when the rest of the page switches to light mode */
+  :root[data-theme="light"] .terminal{
+    --bg-alt: #16203A;
+    --bg-elevated: #1C2A4A;
+    --border-soft: rgba(159,174,199,0.16);
+  }
+  :root[data-theme="light"] .terminal-body{ color: #C9D3E3; }
+  :root[data-theme="light"] .terminal-titlebar{ color: #9FAEC7; }
+  :root[data-theme="light"] .terminal .prompt{ color: #E8A33D; }
+  :root[data-theme="light"] .terminal .ok{ color: #5FB8C4; }
+  :root[data-theme="light"] .terminal .cursor{ background: #E8A33D; }
 
-.header{
-text-align:center;
-padding-bottom:20px;
-border-bottom:2px solid #eee;
-}
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 
-.header h1{
-margin:0;
-font-size:36px;
-}
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  header.topbar, .terminal, .tree, .project, .writing-card, .edu-item, .btn{
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
 
-.header p{
-margin:5px 0;
-color:#666;
-}
+  a{ color: var(--teal); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 
-.contact{
-margin-top:10px;
-font-size:14px;
-}
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-.section{
-margin-top:35px;
-}
+  h1,h2,h3{ font-family: var(--display); font-weight: 600; margin: 0; letter-spacing: -0.01em; }
 
-.section h2{
-border-left:5px solid #2ecc71;
-padding-left:10px;
-margin-bottom:15px;
-}
+  /* ---------- Topbar ---------- */
+  header.topbar{
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(15,22,38,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .topbar-inner{
+    max-width: var(--max); margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo{
+    font-family: var(--mono); font-size: 15px; color: var(--accent);
+    text-decoration: none;
+  }
+  nav.primary-nav ul{
+    display: flex; gap: 22px; list-style: none; margin: 0; padding: 0;
+  }
+  nav.primary-nav a{
+    color: var(--text-dim); text-decoration: none; font-size: 14px;
+    font-family: var(--sans); font-weight: 500;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav.primary-nav a:hover{ color: var(--text); border-color: var(--accent); }
+  .nav-toggle{
+    display: none;
+    background: none; border: 1px solid var(--border-soft); color: var(--text);
+    border-radius: 4px; padding: 6px 9px; font-family: var(--mono); font-size: 13px;
+  }
 
-.skills span{
-display:inline-block;
-background:#2ecc71;
-color:white;
-padding:6px 12px;
-margin:6px;
-border-radius:4px;
-font-size:14px;
-}
+  .topbar-right{ display: flex; align-items: center; gap: 10px; }
+  .theme-toggle{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 6px;
+    background: none; border: 1px solid var(--border-soft); color: var(--text-dim);
+    cursor: pointer;
+  }
+  .theme-toggle:hover{ color: var(--accent); border-color: var(--accent); }
+  .theme-toggle svg{ width: 16px; height: 16px; }
+  .theme-toggle .icon-moon{ display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun{ display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon{ display: inline; }
 
-.job{
-margin-bottom:25px;
-}
+  @media (max-width: 640px){
+    nav.primary-nav{ display: none; }
+    nav.primary-nav.open{
+      display: block; position: absolute; top: 54px; left: 0; right: 0;
+      background: var(--bg-alt); border-bottom: 1px solid var(--border-soft);
+      padding: 12px 24px;
+    }
+    nav.primary-nav.open ul{ flex-direction: column; gap: 14px; }
+    .nav-toggle{ display: inline-block; }
+  }
 
-.job h3{
-margin:5px 0;
-}
+  /* ---------- Hero ---------- */
+  .hero{ padding: 64px 0 48px; }
+  .hero .wrap{ display: grid; gap: 32px; }
 
-.project{
-margin-bottom:25px;
-}
+  .terminal{
+    background: var(--bg-alt);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -30px rgba(0,0,0,0.6);
+  }
+  .terminal-titlebar{
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: 12px; color: var(--text-dim);
+  }
+  .dot{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot.red{ background: #E8734D; }
+  .dot.yellow{ background: var(--accent); }
+  .dot.green{ background: var(--teal); }
+  .terminal-titlebar span.path{ margin-left: 8px; }
 
-.project h3{
-margin-bottom:5px;
-}
+  .terminal-body{
+    font-family: var(--mono);
+    font-size: 13.5px;
+    padding: 22px 20px 26px;
+    color: #C9D3E3;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 220px;
+  }
+  .terminal-body .prompt{ color: var(--accent); }
+  .terminal-body .ok{ color: var(--teal); }
+  .terminal-body .dim{ color: var(--text-dim); }
+  .cursor{
+    display: inline-block; width: 8px; height: 15px;
+    background: var(--accent); vertical-align: text-bottom; margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
 
-.testimonial{
-margin-bottom:25px;
-background:#f9f9f9;
-padding:15px;
-border-radius:5px;
-}
+  .hero-copy p{ color: var(--text-dim); max-width: 62ch; font-size: 16px; }
+  .hero-links{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .btn{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-weight: 500; font-size: 14px;
+    padding: 9px 16px; border-radius: 6px; text-decoration: none;
+    border: 1px solid var(--border-soft); color: var(--text);
+  }
+  .btn.primary{ background: var(--accent); color: #1B1200; border-color: var(--accent); }
+  .btn.primary:hover{ background: #F0AE52; }
+  .btn:not(.primary):hover{ border-color: var(--accent); color: var(--accent); }
+  .btn svg{ width: 15px; height: 15px; }
 
-.testimonial p{
-margin:0 0 10px 0;
-}
+  /* ---------- Sections generic ---------- */
+  section{ padding: 56px 0; border-top: 1px solid var(--border-soft); }
+  section h2{
+    font-size: 22px; margin-bottom: 28px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  section h2 .idx{ font-family: var(--mono); font-size: 14px; color: var(--accent-dim); }
 
-ul{
-padding-left:20px;
-}
+  /* ---------- Skills tree ---------- */
+  .tree{
+    font-family: var(--mono); font-size: 14px;
+    background: var(--bg-alt); border: 1px solid var(--border-soft);
+    border-radius: 8px; padding: 18px 20px;
+    overflow-x: auto;
+  }
+  .tree .root{ color: var(--text-dim); margin-bottom: 6px; }
+  .skill-row{ display: flex; gap: 10px; padding: 5px 0; align-items: baseline; }
+  .tree-glyph{ color: var(--border-soft); flex-shrink: 0; }
+  .skill-cat{ color: var(--accent); flex-shrink: 0; min-width: 96px; }
+  .skill-list{ color: var(--text-dim); }
 
-.footer{
-text-align:center;
-margin-top:40px;
-color:#777;
-font-size:14px;
-}
+  @media (max-width: 560px){
+    .skill-row{ flex-direction: column; gap: 2px; }
+    .skill-cat{ min-width: auto; }
+    .tree-glyph{ display: none; }
+  }
 
+  /* ---------- Experience timeline ---------- */
+  .timeline{ list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before{
+    content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px;
+    width: 1px; background: var(--border-soft);
+  }
+  .timeline li{ position: relative; padding: 0 0 36px 30px; }
+  .timeline li:last-child{ padding-bottom: 0; }
+  .timeline li::before{
+    content: ""; position: absolute; left: 0; top: 5px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .timeline li.current::before{ background: var(--accent); }
+  .role-head{ display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-bottom: 4px; }
+  .role-title{ font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .role-org{ color: var(--teal); font-size: 15px; }
+  .role-dates{ font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-left: auto; }
+  .role-bullets{ margin: 8px 0 0; padding-left: 18px; color: var(--text-dim); font-size: 14.5px; }
+  .role-bullets li{ padding: 0; margin: 4px 0; }
+  .role-bullets li::before{ content: none; }
+
+  /* ---------- Projects ---------- */
+  .project-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 640px){ .project-grid{ grid-template-columns: 1fr; } }
+
+  .project{
+    background: var(--bg-alt); border: 1px solid var(--border-soft);
+    border-radius: 6px; padding: 20px; border-left: 3px solid var(--teal);
+  }
+  .project h3{ font-size: 16px; margin-bottom: 6px; }
+  .project .stack{ font-family: var(--mono); font-size: 11.5px; color: var(--accent-dim); margin-bottom: 10px; letter-spacing: 0.01em; }
+  .project p{ color: var(--text-dim); font-size: 14px; margin: 0 0 10px; }
+  .project .links a{ font-size: 13px; font-family: var(--mono); text-decoration: none; }
+  .project .links a:hover{ text-decoration: underline; }
+
+  .project.featured{
+    grid-column: 1 / -1;
+    border-left-color: var(--accent);
+    padding: 0;
+    overflow: hidden;
+  }
+  .featured-bar{
+    font-family: var(--mono); font-size: 12px; color: var(--text-dim);
+    background: var(--bg-elevated); padding: 9px 20px; border-bottom: 1px solid var(--border-soft);
+  }
+  .featured-body{ padding: 20px; }
+  .featured .badge{
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px;
+    margin-bottom: 10px; display: inline-block;
+  }
+
+  /* ---------- Writing / Education ---------- */
+  .writing-card, .edu-item{
+    background: var(--bg-alt); border: 1px solid var(--border-soft);
+    border-radius: 6px; padding: 18px 20px; margin-bottom: 12px;
+  }
+  .writing-card h3, .edu-item h3{ font-size: 15.5px; margin-bottom: 4px; }
+  .writing-card p, .edu-item p{ color: var(--text-dim); font-size: 14px; margin: 4px 0 0; }
+
+  /* ---------- Footer ---------- */
+  footer.contact{ padding: 56px 0 72px; }
+  footer.contact h2{ margin-bottom: 14px; }
+  footer.contact p{ color: var(--text-dim); max-width: 50ch; }
+  .contact-links{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .foot-note{ margin-top: 48px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="logo">~/kapil</a>
+    <nav class="primary-nav" id="primaryNav">
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" type="button">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">menu</button>
+    </div>
+  </div>
+</header>
 
-<div class="header">
-<h1>Kapil Dev Pal</h1>
-<p>Ruby on Rails Developer | Backend Engineer</p>
+<main>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="terminal">
+        <div class="terminal-titlebar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="path">kapil@veerexa — console</span>
+        </div>
+        <div class="terminal-body" id="terminalBody" aria-label="Ruby console introduction"></div>
+      </div>
 
-<div class="contact">
-📧 dev.kapildevpal@gmail.com  
-📱 8264216929  
-💻 GitHub: github.com/kapildevpal  
-✍ Blog: Rails to Rescue (Medium)
-</div>
+      <div class="hero-copy">
+        <p>Software Engineer and Ruby on Rails developer with 4+ years building scalable SaaS platforms, enterprise applications, and REST APIs — from authentication and background job pipelines to database tuning and production deployments.</p>
+        <div class="hero-links">
+          <a class="btn primary" href="mailto:dev.kapildevpal@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Email me
+          </a>
+          <a class="btn" href="https://github.com/KapilDevPal" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 0 0-6 0C6.7 3 5.7 3.3 5.7 3.3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.3 9.7c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://linkedin.com/in/kapil-dev-pal" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5c0-1.4 1-2.5 2.3-2.5S17 11.1 17 12.5V17M12 10.5V17"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="Kapil_Dev_Pal_SDE.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            Resume (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="skills">
+    <div class="wrap">
+      <h2><span class="idx">01</span> Skills</h2>
+      <div class="tree">
+        <div class="root">skills/</div>
+        <div class="skill-row"><span class="tree-glyph">├──</span><span class="skill-cat">backend/</span><span class="skill-list">Ruby, Ruby on Rails 7/8, REST APIs, PostgreSQL, Redis, Sidekiq, ActionCable, ActiveAdmin, FCM</span></div>
+        <div class="skill-row"><span class="tree-glyph">├──</span><span class="skill-cat">frontend/</span><span class="skill-list">Hotwire, Turbo, Stimulus, React.js, Tailwind CSS, JavaScript</span></div>
+        <div class="skill-row"><span class="tree-glyph">├──</span><span class="skill-cat">testing/</span><span class="skill-list">RSpec, FactoryBot, Capybara, Unit &amp; Integration Testing, TDD, Automated Testing</span></div>
+        <div class="skill-row"><span class="tree-glyph">├──</span><span class="skill-cat">devops/</span><span class="skill-list">Docker, Kamal, Linux, Git, CI/CD, Grafana</span></div>
+        <div class="skill-row"><span class="tree-glyph">├──</span><span class="skill-cat">analytics/</span><span class="skill-list">Google Analytics, Firebase Analytics, Event Tracking, Performance Monitoring</span></div>
+        <div class="skill-row"><span class="tree-glyph">└──</span><span class="skill-cat">ai-tools/</span><span class="skill-list">GitHub Copilot, Cursor, ChatGPT, Claude, OpenAI APIs, AI-assisted development workflows</span></div>
+      </div>
+    </div>
+  </section>
 
-<div class="section">
-<h2>Professional Summary</h2>
-<p>
-Experienced Ruby on Rails developer with strong expertise in building scalable SaaS platforms,
-REST APIs, and real-time web applications. Skilled in backend architecture, performance
-optimization, and cloud deployments. Passionate about solving real-world problems through
-software and sharing knowledge through technical blogging on the Rails to Rescue platform.
-</p>
-</div>
+  <section id="experience">
+    <div class="wrap">
+      <h2><span class="idx">02</span> Experience</h2>
+      <ol class="timeline">
+        <li class="current">
+          <div class="role-head">
+            <span class="role-title">Software Consultant</span>
+            <span class="role-org">Veerexa</span>
+            <span class="role-dates">May 2025 — Present</span>
+          </div>
+          <ul class="role-bullets">
+            <li>Built scalable Rails SaaS applications and production REST APIs for a media production management platform, with authentication and role-based access control.</li>
+            <li>Built collaboration features for performers, coordinators, stunt managers, and production teams, backed by Sidekiq background pipelines.</li>
+            <li>Optimized PostgreSQL queries and API architecture, and designed Docker + Kamal deployment pipelines for faster, more reliable releases.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role-head">
+            <span class="role-title">Software Engineer</span>
+            <span class="role-org">Stratosphere IT Services Pvt. Ltd.</span>
+            <span class="role-dates">Jan 2025 — May 2025</span>
+          </div>
+          <ul class="role-bullets">
+            <li>Developed and maintained School Management Software serving multiple institutional clients.</li>
+            <li>Built modules for student management, attendance workflows, administrative operations, and reporting.</li>
+            <li>Designed scalable backend services and RESTful APIs, improving workflows through refactoring.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role-head">
+            <span class="role-title">Software Engineer</span>
+            <span class="role-org">Precious Infosystem</span>
+            <span class="role-dates">Dec 2023 — Dec 2024</span>
+          </div>
+          <ul class="role-bullets">
+            <li>Developed custom Ruby on Rails applications based on client-specific requirements.</li>
+            <li>Built REST APIs and business workflow automation features across diverse client projects.</li>
+            <li>Optimized application performance and maintained code quality for long-term maintainability.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role-head">
+            <span class="role-title">Software Developer</span>
+            <span class="role-org">BestPeers Infosystem</span>
+            <span class="role-dates">Jun 2022 — Nov 2023</span>
+          </div>
+          <ul class="role-bullets">
+            <li>Developed scalable Ruby on Rails applications for multiple client-facing projects.</li>
+            <li>Improved database performance through query optimization and indexing strategies.</li>
+            <li>Built reusable, maintainable components to accelerate future development.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-<div class="section">
-<h2>Technical Skills</h2>
+  <section id="projects">
+    <div class="wrap">
+      <h2><span class="idx">03</span> Projects</h2>
+      <div class="project-grid">
 
-<div class="skills">
-<span>Ruby</span>
-<span>Ruby on Rails</span>
-<span>PostgreSQL</span>
-<span>Redis</span>
-<span>JavaScript</span>
-<span>Hotwire</span>
-<span>StimulusJS</span>
-<span>Tailwind CSS</span>
-<span>REST APIs</span>
-<span>Linux</span>
-<span>Docker</span>
-<span>Git</span>
-<span>OpenLiteSpeed</span>
-<span>Background Jobs</span>
-</div>
+        <article class="project featured">
+          <div class="featured-bar">indian-space-hub / play.google.com/store/apps/details?id=com.kapildevpal.indiaspacehub</div>
+          <div class="featured-body">
+            <span class="badge">Published app</span>
+            <h3>Indian Space Hub</h3>
+            <div class="stack">React Native · Ruby on Rails · PostgreSQL · Firebase · REST APIs · RSpec · Google Analytics</div>
+            <p>A mobile app dedicated to India's space program — launch vehicles, satellites, astronauts, and space news, with launch countdowns, push notifications, quizzes, bookmarking, and rewards. Google Sign-In and in-app purchase/subscription support are integrated, with moderated community contribution workflows and analytics-driven feature development.</p>
+            <div class="links"><a href="https://play.google.com/store/apps/details?id=com.kapildevpal.indiaspacehub" target="_blank" rel="noopener">View on Play Store →</a></div>
+          </div>
+        </article>
 
-</div>
+        <article class="project">
+          <h3>Filmik.io</h3>
+          <div class="stack">Rails · PostgreSQL · Redis · Sidekiq · Docker · Kamal · React.js</div>
+          <p>A SaaS platform for media production management, streamlining collaboration between production teams, coordinators, performers, and stunt managers, with RBAC and Sidekiq-backed background processing.</p>
+          <div class="links"><a href="https://filmik.io/" target="_blank" rel="noopener">filmik.io →</a></div>
+        </article>
 
-<div class="section">
-<h2>Professional Experience</h2>
+        <article class="project">
+          <h3>Veerexa</h3>
+          <div class="stack">Rails · PostgreSQL · Sidekiq · Docker · Kamal · Redis · VPS · React</div>
+          <p>Scalable SaaS applications and REST APIs for startups, with multi-tenant architecture, subscription billing, and VPS deployments including SSL, backups, and monitoring.</p>
+        </article>
 
-<div class="job">
+        <article class="project">
+          <h3>UseNami — Marketplace Platform</h3>
+          <div class="stack">Rails · PostgreSQL · ActionCable</div>
+          <p>Real-time buyer-seller communication over ActionCable WebSockets, with deal-stage workflows and transaction management for marketplace interactions.</p>
+          <div class="links"><a href="https://usenami.com/" target="_blank" rel="noopener">usenami.com →</a></div>
+        </article>
 
-<h3>Ruby on Rails Developer</h3>
-<b>Use Nami – Business Marketplace Platform</b>
+        <article class="project">
+          <h3>SmartPath — Business Automation</h3>
+          <div class="stack">Rails · ActiveAdmin · Sidekiq</div>
+          <p>Pricing and fee management for business workflow automation, with ActiveAdmin reporting and Sidekiq-driven background processing for throughput and reliability.</p>
+          <div class="links"><a href="https://smartpath.co/" target="_blank" rel="noopener">smartpath.co →</a></div>
+        </article>
 
-<ul>
-<li>Worked on a platform where users can buy, sell, or acquire businesses.</li>
-<li>Implemented deal stage workflows for business acquisition lifecycle.</li>
-<li>Built transaction handling systems for secure deal processing.</li>
-<li>Developed real-time messaging/chat features between buyers and sellers.</li>
-<li>Optimized backend queries and improved application performance.</li>
-</ul>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="writing">
+    <div class="wrap">
+      <h2><span class="idx">04</span> Writing</h2>
+      <div class="writing-card">
+        <h3>Rails to Rescue — Medium</h3>
+        <p>Articles on Ruby on Rails, SaaS development, deployment, and software engineering best practices.</p>
+        <p><a href="https://medium.com/@rails_to_rescue" target="_blank" rel="noopener">medium.com/@rails_to_rescue →</a></p>
+      </div>
+    </div>
+  </section>
 
-<div class="job">
+  <section id="education">
+    <div class="wrap">
+      <h2><span class="idx">05</span> Education</h2>
+      <div class="edu-item">
+        <h3>Bachelor of Technology (B.Tech)</h3>
+        <p>Prestige Institute of Engineering Management &amp; Research (PIEMR), Indore, India</p>
+      </div>
+      <div class="edu-item">
+        <h3>Diploma in Engineering</h3>
+        <p>Sant Longowal Institute of Engineering and Technology (SLIET), Sangrur, India</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-<h3>Backend Developer</h3>
-<b>SmartPath – Pricing Optimization Software</b>
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2><span class="idx">06</span> Contact</h2>
+    <p>Open to Rails, SaaS, and API-focused engineering work — reach out by email or connect on GitHub / LinkedIn.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:dev.kapildevpal@gmail.com">dev.kapildevpal@gmail.com</a>
+      <a class="btn" href="tel:+918264216929">+91 82642 16929</a>
+      <a class="btn" href="https://github.com/KapilDevPal" target="_blank" rel="noopener">github.com/KapilDevPal</a>
+      <a class="btn" href="https://linkedin.com/in/kapil-dev-pal" target="_blank" rel="noopener">linkedin.com/in/kapil-dev-pal</a>
+    </div>
+    <p class="foot-note">Kapil Dev Pal · built from resume data · 2026</p>
+  </div>
+</footer>
 
-<ul>
-<li>Worked on SmartPath Engage software used by tax and accounting professionals.</li>
-<li>Implemented backend logic for pricing and fee schedule optimization.</li>
-<li>Built API integrations and reporting modules.</li>
-<li>Improved system reliability and scalability.</li>
-</ul>
+<script>
+  // Theme toggle — defaults to the visitor's system preference, then can be flipped manually
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  if (prefersLight) root.setAttribute('data-theme', 'light');
 
-</div>
+  function setTheme(theme){
+    root.setAttribute('data-theme', theme);
+    themeToggle.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+  setTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
 
-</div>
+  themeToggle.addEventListener('click', () => {
+    setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
 
-<div class="section">
-<h2>Projects</h2>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  navToggle.addEventListener('click', () => {
+    const open = primaryNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    primaryNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
 
-<div class="project">
+  // Terminal typing effect
+  const body = document.getElementById('terminalBody');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<h3>School Management System</h3>
+  const script = [
+    { type: 'prompt', text: '$ rails console' },
+    { type: 'plain', text: 'Loading development environment (Rails 7.1)' },
+    { type: 'prompt', text: 'irb(main):001> Engineer.find_by(name: "Kapil Dev Pal")' },
+    { type: 'ok', text:
+`=> #<Engineer:0x00007f
+   role: "Software Engineer & Rails Developer",
+   experience: "4+ years",
+   stack: ["Rails 7/8", "PostgreSQL", "Redis", "Sidekiq", "React"],
+   focus: ["SaaS platforms", "REST APIs", "Real-time systems"]>` },
+    { type: 'prompt-final', text: 'irb(main):002> ' }
+  ];
 
-<ul>
-<li>Developed a full-featured school ERP platform with multi-school multi-tenant support.</li>
-<li>Built student management, attendance tracking, fee management, parent portals, and reporting dashboards.</li>
-<li>Implemented RFID-based attendance integration with real-time presence tracking and alerts.</li>
-<li>Designed role-based permissions for admins, teachers, parents, and students.</li>
-<li>Created RESTful APIs for mobile apps and third-party integrations (gradebook exports, SMS gateways).</li>
-<li>Optimized database performance using indexing, eager loading, and caching for high concurrency.</li>
-</ul>
+  function renderStatic(){
+    body.innerHTML = script.map(line => {
+      if(line.type === 'prompt') return `<span class="prompt">${line.text}</span>`;
+      if(line.type === 'plain') return `<span class="dim">${line.text}</span>`;
+      if(line.type === 'ok') return `<span class="ok">${line.text}</span>`;
+      if(line.type === 'prompt-final') return `<span class="prompt">${line.text}</span><span class="cursor"></span>`;
+      return line.text;
+    }).join('\n\n');
+  }
 
-</div>
+  async function typeLines(){
+    for (const line of script){
+      const span = document.createElement('span');
+      span.className = line.type === 'plain' ? 'dim' : (line.type === 'ok' ? 'ok' : 'prompt');
+      body.appendChild(span);
+      for (const ch of line.text){
+        span.textContent += ch;
+        await new Promise(r => setTimeout(r, ch === '\n' ? 0 : 8));
+      }
+      if (line.type === 'prompt-final'){
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        body.appendChild(cursor);
+      } else {
+        body.appendChild(document.createTextNode('\n\n'));
+      }
+    }
+  }
 
-<div class="project">
-
-<h3>Flimik – Film Industry Networking Platform</h3>
-
-<ul>
-<li>Built backend features for a platform connecting stunt coordinators and film professionals.</li>
-<li>Implemented profile management, talent discovery search, and recommendation workflows.</li>
-<li>Built notification systems for actions like profile favorites, job alerts, and collaboration invites.</li>
-<li>Designed scalable API endpoints for native mobile apps and web clients.</li>
-<li>Improved user engagement with real-time messaging (ActionCable) and email digest automation.</li>
-<li>Used background jobs for indexing, media processing, and periodic lead scoring.</li>
-</ul>
-
-</div>
-
-<div class="project">
-
-<h3>Business Marketplace Platform</h3>
-
-<ul>
-<li>Marketplace where users can list, discover, and acquire businesses with secure onboarding flows.</li>
-<li>Implemented deal flow tracking, escrow-style payment workflows, and activity audit logs.</li>
-<li>Built role-based access controls covering buyers, sellers, brokers, and administrators.</li>
-<li>Developed real-time negotiation chat and notification systems.</li>
-<li>Integrated payment gateways and built reporting dashboards for business performance metrics.</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="section">
-<h2>Technical Blogging</h2>
-
-<p>
-I run a Ruby on Rails blog called <b>Rails to Rescue</b> where I publish tutorials
-and deep dives on topics like Rails plugins, deployment strategies,
-Ubuntu upgrades, and backend development practices.
-</p>
-
-</div>
-
-<div class="section">
-<h2>Deployment & Infrastructure</h2>
-
-<ul>
-<li>Deployed Rails applications on Hostinger using OpenLiteSpeed.</li>
-<li>Experience with Linux server configuration and performance optimization.</li>
-<li>Implemented logging and monitoring using Grafana and Promtail.</li>
-</ul>
-
-</div>
-
-
-<div class="footer">
-© 2026 Kapil Dev Pal
-</div>
-
-</div>
+  if (reduceMotion){
+    renderStatic();
+  } else {
+    typeLines();
+  }
+</script>
 
 </body>
 </html>
-```
