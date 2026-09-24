@@ -11,7 +11,7 @@
     content="Have a product to build or improve? Work with Kapil Dev Pal, a full-stack developer with 4+ years of experience in SaaS platforms, APIs, web apps, mobile apps and Chrome extensions using Rails, Go (Gin), React and Next.js, with CQRS and event-driven architecture. Explore projects and discuss your idea.">
   <meta property="og:title" content="Kapil Dev Pal — Good ideas deserve great software.">
   <meta property="og:description"
-    content="Websites, SaaS platforms, mobile apps and Chrome extensions. Explore selected projects and start a conversation about yours.">
+    content="Websites, SaaS platforms, Go (Gin) and Rails APIs with CQRS, mobile apps and Chrome extensions. Explore selected projects and start a conversation about yours.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d4bf0'/%3E%3Cpath d='M18 15v34M44 15L26 32l18 17' fill='none' stroke='white' stroke-width='7'/%3E%3C/svg%3E">
@@ -3259,6 +3259,11 @@
         font-size: 1.375rem
       }
     }
+      .cqrs-flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; font-size:12px }
+    .cqrs-flow span { padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted) }
+    .cqrs-flow .cq-cmd { border-color:var(--accent); color:var(--accent) }
+    .cqrs-flow i { font-style:normal; color:var(--muted) }
+
   </style>
   <!-- Technology icons: Devicon (https://devicon.dev/).
 The MIT License (MIT)
@@ -3286,6 +3291,7 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
 -->
   <!-- Google Analytics logo: Simple Icons, CC0, https://simpleicons.org/ -->
   <!-- Official Google Play badge: https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kapil Dev Pal","jobTitle":"Full-Stack Software Engineer","email":"mailto:dev.kapildevpal@gmail.com","sameAs":["https://github.com/KapilDevPal","https://linkedin.com/in/kapil-dev-pal","https://medium.com/@rails_to_rescue"],"knowsAbout":["Ruby on Rails","Go","Gin","CQRS","Event-driven architecture","React","Next.js","React Native","PostgreSQL","Redis","Docker"]}</script>
 </head>
 
 <body>
@@ -3340,7 +3346,8 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
               browser extensions — and make existing products work better.</p>
             <div class="hero-cta"><a class="btn" href="#contact">Free project consultation <span class="arrow"
                   aria-hidden="true">↗</span></a><a class="text-link" href="#projects">Explore my work <span
-                  aria-hidden="true">↓</span></a></div>
+                  aria-hidden="true">↓</span></a><a class="text-link" href="resume.html" target="_blank"
+                rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
           </div>
         </div>
         <div class="proof-strip" aria-label="At a glance">
@@ -3510,6 +3517,10 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
               validate business rules, while queries read from optimised read models kept in sync through domain
               events. The result is fast reads, safe writes and services that scale independently.</p>
             <p class="stack">Go · Gin · CQRS · Domain events · PostgreSQL · Redis · Docker</p>
+            <div class="cqrs-flow" aria-label="CQRS request flow">
+              <span class="cq-cmd">POST /orders → Command</span><i>→</i><span>Write model</span><i>→</i>
+              <span>Domain event</span><i>→</i><span>Read projection</span><i>←</i><span class="cq-cmd">GET /orders → Query</span>
+            </div>
           </div>
         </article>
         <div class="browser-secondary" id="extensions">
