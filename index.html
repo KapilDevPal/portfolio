@@ -8,10 +8,10 @@
   <meta name="theme-color" content="#f7f8fa">
   <title>Kapil Dev Pal — Web, SaaS, Mobile & Chrome Extension Developer</title>
   <meta name="description"
-    content="Have a product to build or improve? Work with Kapil Dev Pal, a full-stack developer with 4+ years of experience in SaaS platforms, web apps, mobile apps and Chrome extensions using Rails, React and Next.js. Explore projects and discuss your idea.">
+    content="Have a product to build or improve? Work with Kapil Dev Pal, a full-stack developer with 4+ years of experience in SaaS platforms, APIs, web apps, mobile apps and Chrome extensions using Rails, Go (Gin), React and Next.js, with CQRS and event-driven architecture. Explore projects and discuss your idea.">
   <meta property="og:title" content="Kapil Dev Pal — Good ideas deserve great software.">
   <meta property="og:description"
-    content="Websites, SaaS platforms, mobile apps and Chrome extensions. Explore selected projects and start a conversation about yours.">
+    content="Websites, SaaS platforms, Go (Gin) and Rails APIs with CQRS, mobile apps and Chrome extensions. Explore selected projects and start a conversation about yours.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d4bf0'/%3E%3Cpath d='M18 15v34M44 15L26 32l18 17' fill='none' stroke='white' stroke-width='7'/%3E%3C/svg%3E">
@@ -3259,6 +3259,11 @@
         font-size: 1.375rem
       }
     }
+      .cqrs-flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; font-size:12px }
+    .cqrs-flow span { padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted) }
+    .cqrs-flow .cq-cmd { border-color:var(--accent); color:var(--accent) }
+    .cqrs-flow i { font-style:normal; color:var(--muted) }
+
   </style>
   <!-- Technology icons: Devicon (https://devicon.dev/).
 The MIT License (MIT)
@@ -3286,6 +3291,7 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
 -->
   <!-- Google Analytics logo: Simple Icons, CC0, https://simpleicons.org/ -->
   <!-- Official Google Play badge: https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kapil Dev Pal","jobTitle":"Full-Stack Software Engineer","email":"mailto:dev.kapildevpal@gmail.com","sameAs":["https://github.com/KapilDevPal","https://linkedin.com/in/kapil-dev-pal","https://medium.com/@rails_to_rescue"],"knowsAbout":["Ruby on Rails","Go","Gin","CQRS","Event-driven architecture","React","Next.js","React Native","PostgreSQL","Redis","Docker"]}</script>
 </head>
 
 <body>
@@ -3340,7 +3346,8 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
               browser extensions — and make existing products work better.</p>
             <div class="hero-cta"><a class="btn" href="#contact">Free project consultation <span class="arrow"
                   aria-hidden="true">↗</span></a><a class="text-link" href="#projects">Explore my work <span
-                  aria-hidden="true">↓</span></a></div>
+                  aria-hidden="true">↓</span></a><a class="text-link" href="resume.html" target="_blank"
+                rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
           </div>
         </div>
         <div class="proof-strip" aria-label="At a glance">
@@ -3501,6 +3508,21 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
             <p class="stack">Rails · React · PostgreSQL · Redis · Sidekiq · Docker · Kamal</p>
           </div>
         </article>
+        <article class="saas-note">
+          <div class="saas-kicker"><span class="eyebrow accent">Backend architecture</span>
+            <h3>Go (Gin) services with CQRS</h3>
+          </div>
+          <div>
+            <p>High-throughput APIs in Go using the Gin framework, structured with CQRS: commands handle writes and
+              validate business rules, while queries read from optimised read models kept in sync through domain
+              events. The result is fast reads, safe writes and services that scale independently.</p>
+            <p class="stack">Go · Gin · CQRS · Domain events · PostgreSQL · Redis · Docker</p>
+            <div class="cqrs-flow" aria-label="CQRS request flow">
+              <span class="cq-cmd">POST /orders → Command</span><i>→</i><span>Write model</span><i>→</i>
+              <span>Domain event</span><i>→</i><span>Read projection</span><i>←</i><span class="cq-cmd">GET /orders → Query</span>
+            </div>
+          </div>
+        </article>
         <div class="browser-secondary" id="extensions">
           <div class="browser-heading">
             <h3>Built for the browser</h3>
@@ -3573,7 +3595,7 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
               <h3>Bring your product to mobile</h3>
               <p>Create a connected mobile experience with accounts, content, notifications and the APIs that keep it
                 working.</p>
-              <p class="deliverables">React Native apps · REST APIs · Firebase · Subscriptions</p>
+              <p class="deliverables">React Native apps · REST APIs (Rails / Go Gin) · Firebase · Subscriptions</p>
             </div>
           </article>
           <article class="service"><span class="service-index">04</span>
@@ -3581,7 +3603,7 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
               <h3>Improve what you’ve already built</h3>
               <p>Add features, connect third-party services, automate manual work or address slow queries and difficult
                 deployments.</p>
-              <p class="deliverables">Rails & React development · API integrations · Performance · Cloud deployment</p>
+              <p class="deliverables">Rails, Go & React development · CQRS refactors · API integrations · Performance · Cloud deployment</p>
             </div>
           </article>
           <article class="service"><span class="service-index">05</span>
@@ -3677,12 +3699,12 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
             <p class="eyebrow accent">05 / The person behind the work</p>
             <h2>Your product needs<br>more than code.</h2>
             <p>I’m Kapil Dev Pal, a full-stack software engineer with 4+ years of experience helping startups and teams
-              build SaaS platforms, APIs and web applications.</p>
+              build SaaS platforms, APIs and web applications — with Ruby on Rails and Go (Gin), and architecture patterns like CQRS for systems that need to scale.</p>
             <p>My work spans the parts users see and the systems behind them: interfaces, application logic, databases,
               background jobs and deployment. That connected view helps me turn business requirements into software
               people can use.</p>
             <div class="about-links"><a class="text-link"
-                href="https://drive.google.com/file/d/1K4OvuyEp1r0x8WUIBiC4b8MNgYcsNBAk/view" target="_blank"
+                href="resume.html" target="_blank"
                 rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a><a class="text-link"
                 href="https://github.com/KapilDevPal" target="_blank" rel="noopener noreferrer">GitHub <span
                   aria-hidden="true">↗</span></a><a class="text-link" href="https://linkedin.com/in/kapil-dev-pal"
@@ -3750,6 +3772,12 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
                   alt="" width="32" height="32" loading="lazy" decoding="async"></span><span><strong>Ruby on
                   Rails</strong><small>Backend &amp; APIs</small></span></div>
             <div class="tech-card"><span class="tech-icon"><img
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjIwIiBmaWxsPSIjMDBBREQ4Ii8+PHRleHQgeD0iNjQiIHk9Ijg0IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R088L3RleHQ+PC9zdmc+"
+                  alt="" width="32" height="32" loading="lazy" decoding="async"></span><span><strong>Go (Gin)</strong><small>High-performance APIs</small></span></div>
+            <div class="tech-card"><span class="tech-icon"><img
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RDVERkMiIHN0cm9rZS13aWR0aD0iOSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMjAgNDBoNjBsLTE0LTE0TTIwIDQwbDAgMCIvPjxwYXRoIGQ9Ik0xMDggODhINDhsMTQgMTQiLz48Y2lyY2xlIGN4PSIxMDQiIGN5PSI0MCIgcj0iMTAiLz48Y2lyY2xlIGN4PSIyNCIgY3k9Ijg4IiByPSIxMCIvPjwvc3ZnPg=="
+                  alt="" width="32" height="32" loading="lazy" decoding="async"></span><span><strong>CQRS</strong><small>Scalable architecture</small></span></div>
+            <div class="tech-card"><span class="tech-icon"><img
                   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZyBmaWxsPSIjNjFEQUZCIj48Y2lyY2xlIGN4PSI2NCIgY3k9IjY0IiByPSIxMS40Ii8+PHBhdGggZD0iTTEwNy4zIDQ1LjJjLTIuMi0uOC00LjUtMS42LTYuOS0yLjMuNi0yLjQgMS4xLTQuOCAxLjUtNy4xIDIuMS0xMy4yLS4yLTIyLjUtNi42LTI2LjEtMS45LTEuMS00LTEuNi02LjQtMS42LTcgMC0xNS45IDUuMi0yNC45IDEzLjktOS04LjctMTcuOS0xMy45LTI0LjktMTMuOS0yLjQgMC00LjUuNS02LjQgMS42LTYuNCAzLjctOC43IDEzLTYuNiAyNi4xLjQgMi4zLjkgNC43IDEuNSA3LjEtMi40LjctNC43IDEuNC02LjkgMi4zQzguMiA1MCAxLjQgNTYuNiAxLjQgNjRzNi45IDE0IDE5LjMgMTguOGMyLjIuOCA0LjUgMS42IDYuOSAyLjMtLjYgMi40LTEuMSA0LjgtMS41IDcuMS0yLjEgMTMuMi4yIDIyLjUgNi42IDI2LjEgMS45IDEuMSA0IDEuNiA2LjQgMS42IDcuMSAwIDE2LTUuMiAyNC45LTEzLjkgOSA4LjcgMTcuOSAxMy45IDI0LjkgMTMuOSAyLjQgMCA0LjUtLjUgNi40LTEuNiA2LjQtMy43IDguNy0xMyA2LjYtMjYuMS0uNC0yLjMtLjktNC43LTEuNS03LjEgMi40LS43IDQuNy0xLjQgNi45LTIuMyAxMi41LTQuOCAxOS4zLTExLjQgMTkuMy0xOC44cy02LjgtMTQtMTkuMy0xOC44ek05Mi41IDE0LjdjNC4xIDIuNCA1LjUgOS44IDMuOCAyMC4zLS4zIDIuMS0uOCA0LjMtMS40IDYuNi01LjItMS4yLTEwLjctMi0xNi41LTIuNS0zLjQtNC44LTYuOS05LjEtMTAuNC0xMyA3LjQtNy4zIDE0LjktMTIuMyAyMS0xMi4zIDEuMyAwIDIuNS4zIDMuNS45ek04MS4zIDc0Yy0xLjggMy4yLTMuOSA2LjQtNi4xIDkuNi0zLjcuMy03LjQuNC0xMS4yLjQtMy45IDAtNy42LS4xLTExLjItLjQtMi4yLTMuMi00LjItNi40LTYtOS42LTEuOS0zLjMtMy43LTYuNy01LjMtMTAgMS42LTMuMyAzLjQtNi43IDUuMy0xMCAxLjgtMy4yIDMuOS02LjQgNi4xLTkuNiAzLjctLjMgNy40LS40IDExLjItLjQgMy45IDAgNy42LjEgMTEuMi40IDIuMiAzLjIgNC4yIDYuNCA2IDkuNiAxLjkgMy4zIDMuNyA2LjcgNS4zIDEwLTEuNyAzLjMtMy40IDYuNi01LjMgMTB6bTguMy0zLjNjMS41IDMuNSAyLjcgNi45IDMuOCAxMC4zLTMuNC44LTcgMS40LTEwLjggMS45IDEuMi0xLjkgMi41LTMuOSAzLjYtNiAxLjItMi4xIDIuMy00LjIgMy40LTYuMnpNNjQgOTcuOGMtMi40LTIuNi00LjctNS40LTYuOS04LjMgMi4zLjEgNC42LjIgNi45LjIgMi4zIDAgNC42LS4xIDYuOS0uMi0yLjIgMi45LTQuNSA1LjctNi45IDguM3ptLTE4LjYtMTVjLTMuOC0uNS03LjQtMS4xLTEwLjgtMS45IDEuMS0zLjMgMi4zLTYuOCAzLjgtMTAuMyAxLjEgMiAyLjIgNC4xIDMuNCA2LjEgMS4yIDIuMiAyLjQgNC4xIDMuNiA2LjF6bS03LTI1LjVjLTEuNS0zLjUtMi43LTYuOS0zLjgtMTAuMyAzLjQtLjggNy0xLjQgMTAuOC0xLjktMS4yIDEuOS0yLjUgMy45LTMuNiA2LTEuMiAyLjEtMi4zIDQuMi0zLjQgNi4yek02NCAzMC4yYzIuNCAyLjYgNC43IDUuNCA2LjkgOC4zLTIuMy0uMS00LjYtLjItNi45LS4yLTIuMyAwLTQuNi4xLTYuOS4yIDIuMi0yLjkgNC41LTUuNyA2LjktOC4zem0yMi4yIDIxbC0zLjYtNmMzLjguNSA3LjQgMS4xIDEwLjggMS45LTEuMSAzLjMtMi4zIDYuOC0zLjggMTAuMy0xLjEtMi4xLTIuMi00LjItMy40LTYuMnpNMzEuNyAzNWMtMS43LTEwLjUtLjMtMTcuOSAzLjgtMjAuMyAxLS42IDIuMi0uOSAzLjUtLjkgNiAwIDEzLjUgNC45IDIxIDEyLjMtMy41IDMuOC03IDguMi0xMC40IDEzLTUuOC41LTExLjMgMS40LTE2LjUgMi41LS42LTIuMy0xLTQuNS0xLjQtNi42ek03IDY0YzAtNC43IDUuNy05LjcgMTUuNy0xMy40IDItLjggNC4yLTEuNSA2LjQtMi4xIDEuNiA1IDMuNiAxMC4zIDYgMTUuNi0yLjQgNS4zLTQuNSAxMC41LTYgMTUuNUMxNS4zIDc1LjYgNyA2OS42IDcgNjR6bTI4LjUgNDkuM2MtNC4xLTIuNC01LjUtOS44LTMuOC0yMC4zLjMtMi4xLjgtNC4zIDEuNC02LjYgNS4yIDEuMiAxMC43IDIgMTYuNSAyLjUgMy40IDQuOCA2LjkgOS4xIDEwLjQgMTMtNy40IDcuMy0xNC45IDEyLjMtMjEgMTIuMy0xLjMgMC0yLjUtLjMtMy41LS45ek05Ni4zIDkzYzEuNyAxMC41LjMgMTcuOS0zLjggMjAuMy0xIC42LTIuMi45LTMuNS45LTYgMC0xMy41LTQuOS0yMS0xMi4zIDMuNS0zLjggNy04LjIgMTAuNC0xMyA1LjgtLjUgMTEuMy0xLjQgMTYuNS0yLjUuNiAyLjMgMSA0LjUgMS40IDYuNnptOS0xNS42Yy0yIC44LTQuMiAxLjUtNi40IDIuMS0xLjYtNS0zLjYtMTAuMy02LTE1LjYgMi40LTUuMyA0LjUtMTAuNSA2LTE1LjUgMTMuOCA0IDIyLjEgMTAgMjIuMSAxNS42IDAgNC43LTUuOCA5LjctMTUuNyAxMy40eiIvPjwvZz48L3N2Zz4="
                   alt="" width="32" height="32" loading="lazy"
                   decoding="async"></span><span><strong>React</strong><small>Web interfaces</small></span></div>
@@ -3806,7 +3834,9 @@ Project screenshots supplied from https://github.com/KapilDevPal/portfolio at co
             <summary>View the full technical toolkit</summary>
             <dl class="skills-table">
               <dt>Backend</dt>
-              <dd>Ruby, Rails 7/8, Python, REST APIs, PostgreSQL, Redis, Sidekiq, ActionCable, ActiveAdmin, FCM</dd>
+              <dd>Ruby, Rails 7/8, Go (Golang), Gin, Python, REST APIs, gRPC basics, PostgreSQL, Redis, Sidekiq, ActionCable, ActiveAdmin, FCM</dd>
+              <dt>Architecture</dt>
+              <dd>CQRS (separate command &amp; query models), event-driven design, domain events, clean/hexagonal architecture, microservices, read-model projections</dd>
               <dt>Frontend</dt>
               <dd>Hotwire, Turbo, Stimulus, React.js, Next.js, Tailwind CSS, JavaScript</dd>
               <dt>Quality</dt>
