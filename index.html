@@ -505,7 +505,12 @@
       background: #dfe8e6;
       display: flex;
       align-items: center;
-      justify-content: center
+      justify-content: center;
+      transition: box-shadow .3s ease
+    }
+
+    .feature-card:hover .project-visual {
+      box-shadow: 0 20px 40px -20px #1a1f2e40
     }
 
     .project-visual img {
@@ -758,8 +763,9 @@
       display: grid;
       grid-template-columns: 38px 1fr;
       gap: 15px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line)
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left .2s ease
     }
 
     .service:first-child {
@@ -771,10 +777,21 @@
       padding-bottom: 0
     }
 
+    .service:hover {
+      padding-left: 6px
+    }
+
     .service-index {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--soft);
       color: var(--accent);
-      font-size: 13px;
-      padding-top: 5px
+      font-size: 12.5px;
+      font-weight: 700
     }
 
     .service h3 {
@@ -805,15 +822,33 @@
     }
 
     .step {
-      border-top: 1px solid var(--line);
-      padding-top: 24px
+      border-top: 2px solid var(--line);
+      padding-top: 22px;
+      position: relative
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 34px;
+      height: 2px;
+      background: var(--accent)
     }
 
     .step-num {
-      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
       color: var(--accent);
-      margin-bottom: 21px;
-      display: block
+      background: var(--soft);
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 18px
     }
 
     .step h3 {
@@ -2306,15 +2341,15 @@
 
     .main-app-list {
       display: grid;
-      gap: 18px
+      gap: 16px
     }
 
     .main-app-card {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1fr 1.05fr;
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden
     }
 
@@ -2322,9 +2357,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: #edf0fa;
-      min-height: 240px;
+      padding: 18px;
+      background: linear-gradient(155deg, #edf0fa, #e3e8fa);
+      aspect-ratio: 1.25;
       border-right: 1px solid var(--line)
     }
 
@@ -2342,18 +2377,26 @@
     }
 
     .main-app-body {
-      padding: 26px 28px;
+      padding: 24px 26px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 0
     }
 
     .main-app-body .category {
-      font-size: 11.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .09em;
+      letter-spacing: .07em;
       color: var(--accent);
-      margin-bottom: 7px
+      background: var(--soft);
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 11px
     }
 
     .main-app-body h3 {
@@ -2597,26 +2640,21 @@
     }
 
     @media(max-width:1100px) {
-      .main-app-card {
-        grid-template-columns: 1.15fr 1fr
-      }
-
       .main-app-body {
-        padding: 27px
+        padding: 22px 24px
       }
 
       .main-app-visual {
-        padding: 18px;
-        min-height: 310px
+        padding: 16px
       }
 
       .main-app-body h3 {
-        font-size: 31px
+        font-size: 24px
       }
 
       .browser-card {
-        gap: 14px;
-        padding: 18px
+        gap: 13px;
+        padding: 15px
       }
 
       .browser-thumbnail {
@@ -2629,7 +2667,7 @@
       }
 
       .main-app-heading h3 {
-        font-size: 32px
+        font-size: 30px
       }
     }
 
@@ -2639,18 +2677,18 @@
       }
 
       .main-app-visual {
-        min-height: 0;
+        aspect-ratio: 1.9;
         border-right: 0;
         border-bottom: 1px solid var(--line);
-        padding: 24px
+        padding: 20px
       }
 
       .main-app-body {
-        padding: 30px
+        padding: 22px
       }
 
       .main-app-body h3 {
-        font-size: 32px
+        font-size: 23px
       }
 
       .main-app-heading {
@@ -2710,27 +2748,28 @@
 
     @media(max-width:560px) {
       .main-app-heading h3 {
-        font-size: 30px
+        font-size: 28px
       }
 
       .main-app-visual {
-        padding: 14px
+        aspect-ratio: 1.6;
+        padding: 16px
       }
 
       .main-app-body {
-        padding: 25px 23px
+        padding: 20px 18px
       }
 
       .main-app-body h3 {
-        font-size: 29px
+        font-size: 21px
       }
 
       .app-description {
-        font-size: 15px
+        font-size: 13.5px
       }
 
       .app-features {
-        font-size: 13px
+        font-size: 12px
       }
 
       .browser-heading {
@@ -2740,13 +2779,13 @@
       }
 
       .browser-card {
-        gap: 13px;
-        padding: 17px
+        gap: 12px;
+        padding: 14px
       }
 
       .browser-thumbnail {
-        width: 87px;
-        height: 69px
+        width: 84px;
+        height: 66px
       }
 
       .browser-body h4 {
@@ -2825,11 +2864,16 @@
     }
 
     .value-number {
-      display: block;
+      display: inline-block;
       color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .035em;
-      margin-bottom: 22px
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      background: var(--soft);
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 20px
     }
 
     .value-card h3 {
@@ -3447,16 +3491,20 @@
       transition: transform .25s ease, box-shadow .25s ease, border-color .2s ease
     }
 
-    .feature-card:hover,
     .main-app-card:hover,
-    .browser-card:hover {
+    .browser-card:hover,
+    .value-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 18px 38px -22px #1a1f2e33
     }
 
-    :root[data-theme=dark] .feature-card:hover,
+    .feature-card:hover {
+      transform: translateY(-3px)
+    }
+
     :root[data-theme=dark] .main-app-card:hover,
-    :root[data-theme=dark] .browser-card:hover {
+    :root[data-theme=dark] .browser-card:hover,
+    :root[data-theme=dark] .value-card:hover {
       box-shadow: 0 18px 38px -22px #00000066
     }
 
